@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+db:
+
+image: postgis/postgis:13-3.3
+environment:
+  POSTGRES_DB: pfia
+  POSTGRES_USER: pfia
+  POSTGRES_PASSWORD: pfia
+ports:
+  - "5432:5432"
+volumes:
+  - pgdata:/var/lib/postgresql/data
+  - ./db/ddl.sql:/docker-entrypoint-initdb.d/ddl.sql:ro
+volumes:
+pgdata:
